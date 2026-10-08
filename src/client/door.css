@@ -1,5 +1,5 @@
 /*
- * The door: Hearth's sign-in, join and claim pages, in the app's "Evening Glass" look (app/tokens.css).
+ * The door: Agent Express's sign-in, join and claim pages, in the app's "Evening Glass" look (app/tokens.css).
  * They're the first thing anyone sees, so they get the app's aura, glass and type, and nothing else
  * from it: these pages load before anyone is signed in, and stay small.
  * The 3D office's editions keep the cartoon door (login.css); vite.config.ts picks one per edition.

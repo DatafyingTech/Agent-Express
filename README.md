@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hearth
+# Agent Express
 
 **A team of Claude Code agents that runs your business and your household, on your own computer,
 and texts you back on your phone.**
@@ -23,16 +23,16 @@ Claude plan. Your phone reaches it over your private Tailscale network, from any
 
 ## What it does
 
-![Hearth on a phone: a conversation with three teammates](docs/images/demo.gif)
+![Agent Express on a phone: a conversation with three teammates](docs/images/demo.gif)
 
 *Nothing here is staged. These are real Claude Code agents in a brand-new workspace, recorded from
-a real Hearth build in a phone-sized browser, start to finish in one take. Every reply is what the
+a real Agent Express build in a phone-sized browser, start to finish in one take. Every reply is what the
 agents actually wrote, and the memory sheet at the end is what Haiku actually kept. Two honest
 footnotes: to keep the recording cheap every teammate ran on Haiku instead of the model in their
 brief, and the stretches where they were thinking are sped up (up to 8x). The company and the
 person are made up: "Acme Studio" and "Sam" don't exist.*
 
-You open Hearth on your phone. Your **Chief of Staff** has planned the week and your **Bookkeeper**
+You open Agent Express on your phone. Your **Chief of Staff** has planned the week and your **Bookkeeper**
 has the invoices ready. You open the studio's space, tap **✚ → Call a meeting**, pick the
 **Strategy Advisor**, the **Financial Analyst** and the **Devil's Advocate**, and ask:
 
@@ -47,19 +47,19 @@ what's still open.
 
 On a computer it's the same app with room to breathe:
 
-![Hearth on a desktop: the conversation, with What the table knows beside it](docs/images/desktop-conversation.png)
+![Agent Express on a desktop: the conversation, with What the table knows beside it](docs/images/desktop-conversation.png)
 
 Every teammate is a real **Claude Code** session in a real terminal on your computer. They read and
 write real files in your workspace, use your installed skills and MCP tools, run commands, and
-remember things in a shared `memory/` folder that every teammate reads before they answer. Hearth
+remember things in a shared `memory/` folder that every teammate reads before they answer. Agent Express
 is the calm front door to all of it.
 
 ### Why not just use Claude on my phone, or Claude Code in a terminal?
 
-They are both excellent, and Hearth uses Claude Code for everything. What it adds is a *team*, a
+They are both excellent, and Agent Express uses Claude Code for everything. What it adds is a *team*, a
 place for them to live, and a way to reach them that doesn't need you at your desk.
 
-|  | Hearth | The Claude app on your phone | Claude Code in a terminal |
+|  | Agent Express | The Claude app on your phone | Claude Code in a terminal |
 |---|---|---|---|
 | **Works on** | Files, tools and commands on your own computer | Chats and uploads | Files, tools and commands on your own computer |
 | **From your phone** | Yes, built for it | Yes | Not really |
@@ -128,10 +128,10 @@ phone to reach them.
 Open **PowerShell** (press Start, type `powershell`, press Enter) and paste:
 
 ```powershell
-irm https://raw.githubusercontent.com/DatafyingTech/Hearth/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/DatafyingTech/Agent-Express/main/install.ps1 | iex
 ```
 
-Or [download the ZIP](https://github.com/DatafyingTech/Hearth/archive/refs/heads/main.zip),
+Or [download the ZIP](https://github.com/DatafyingTech/Agent-Express/archive/refs/heads/main.zip),
 right-click it, choose **Extract All**, open the folder and double-click **`install.bat`**.
 
 Windows may show **"Windows protected your PC"** for `install.bat`. That is SmartScreen reacting to
@@ -141,7 +141,7 @@ choose **Properties**, tick **Unblock** and extract it again.
 ### macOS and Linux
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/DatafyingTech/Hearth/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/DatafyingTech/Agent-Express/main/install.sh | bash
 ```
 
 ### What the installer does
@@ -152,16 +152,16 @@ Every step is skipped when it is already done, so running it again is always saf
    missing: `winget` on Windows, Homebrew on macOS, your package manager on Linux. It asks first.
 2. **Checks that Claude Code is signed in**, and offers to sign you in.
 3. **Installs and builds the app** (`npm ci`, `npm run build`).
-4. **Creates your workspace**, `~/Hearth` (`%USERPROFILE%\Hearth` on Windows): a starter
+4. **Creates your workspace**, `~/AgentExpress` (`%USERPROFILE%\AgentExpress` on Windows): a starter
    `CLAUDE.md` about you, a `memory/` folder and a `TODO.md`, as a git repository. It also tells
    Claude Code to trust that folder, after backing up `~/.claude.json`. Without that, the first
    teammate you hire would stop at Claude Code's "Do you trust this folder?" question, whose default
    answer is "No, exit".
 5. **Sets your sign-in password.** Type your own, or press Enter for a generated one, which it shows
    you once. Only a hash is stored.
-6. **Offers to start Hearth when you sign in** (a hidden per-user task on Windows, launchd on macOS,
+6. **Offers to start Agent Express when you sign in** (a hidden per-user task on Windows, launchd on macOS,
    a systemd user service on Linux), and adds Start Menu and desktop shortcuts on Windows.
-7. **Starts Hearth and shares it on your tailnet** with `tailscale serve`. Hearth itself only
+7. **Starts Agent Express and shares it on your tailnet** with `tailscale serve`. Agent Express itself only
    listens on `127.0.0.1`, so nothing on your Wi-Fi can reach it.
 8. **Prints the address to open on your phone.**
 
@@ -180,16 +180,16 @@ install.bat -Port 4700 -Workspace D:\MyTeam -NoAutostart
 ```bash
 ./install.sh --port 4700 --workspace ~/my-team --no-autostart
 # or through the one-liner:
-curl -fsSL https://raw.githubusercontent.com/DatafyingTech/Hearth/main/install.sh | bash -s -- --port 4700
+curl -fsSL https://raw.githubusercontent.com/DatafyingTech/Agent-Express/main/install.sh | bash -s -- --port 4700
 ```
 
 | Windows | macOS / Linux | What it does |
 |---|---|---|
 | `-Port <n>` | `--port <n>` | The port on this computer (default 4600) |
-| `-Workspace <dir>` | `--workspace <dir>` | Your workspace folder (default `~/Hearth`) |
-| `-InstallDir <dir>` | `--install-dir <dir>` | Where the one-line install puts the app (default `%LOCALAPPDATA%\Programs\Hearth` / `~/.local/share/hearth`) |
+| `-Workspace <dir>` | `--workspace <dir>` | Your workspace folder (default `~/AgentExpress`) |
+| `-InstallDir <dir>` | `--install-dir <dir>` | Where the one-line install puts the app (default `%LOCALAPPDATA%\Programs\Agent-Express` / `~/.local/share/agent-express`) |
 | `-NoTailscale` | `--no-tailscale` | This computer only: don't install, start or configure Tailscale |
-| `-NoAutostart` / `-Autostart` | `--no-autostart` / `--autostart` | Don't (or do) start Hearth when you sign in, without asking |
+| `-NoAutostart` / `-Autostart` | `--no-autostart` / `--autostart` | Don't (or do) start Agent Express when you sign in, without asking |
 | `-NoShortcut`, `-NoDesktopShortcut` | | No shortcuts, or Start Menu only |
 | `-NoStart` | `--no-start` | Set everything up, but don't start it |
 | `-ResetPassword` | `--reset-password` | Ask for a new password even if one is set |
@@ -198,8 +198,8 @@ curl -fsSL https://raw.githubusercontent.com/DatafyingTech/Hearth/main/install.s
 | `-Force` | `--force` | Reinstall packages and rebuild even when they look up to date |
 
 The one-line Windows install can't take options, so it reads environment variables instead:
-`HEARTH_PORT`, `HEARTH_WORKSPACE`, `HEARTH_INSTALL_DIR`, `HEARTH_YES=1`, `HEARTH_DRY_RUN=1`,
-`HEARTH_NO_TAILSCALE=1`, `HEARTH_NO_AUTOSTART=1` and `HEARTH_PASSWORD`.
+`AGENT_EXPRESS_PORT`, `AGENT_EXPRESS_WORKSPACE`, `AGENT_EXPRESS_INSTALL_DIR`, `AGENT_EXPRESS_YES=1`, `AGENT_EXPRESS_DRY_RUN=1`,
+`AGENT_EXPRESS_NO_TAILSCALE=1`, `AGENT_EXPRESS_NO_AUTOSTART=1` and `AGENT_EXPRESS_PASSWORD`.
 </details>
 
 ### The helper scripts
@@ -208,8 +208,8 @@ In the app's folder, next to the installer:
 
 | Windows | macOS / Linux | What it does |
 |---|---|---|
-| `start.bat` | `./start.sh` | Start Hearth in the background and open it |
-| `stop.bat` | `./stop.sh` | Stop Hearth and its teammates (`start` wakes them back up) |
+| `start.bat` | `./start.sh` | Start Agent Express in the background and open it |
+| `stop.bat` | `./stop.sh` | Stop Agent Express and its teammates (`start` wakes them back up) |
 | `doctor.bat` | `./doctor.sh` | Check everything and print a fix for each problem |
 | `update.bat` | `./update.sh` | Get the newest version, rebuild and restart, keeping your settings |
 | `password.bat` | `./password.sh` | Set a new sign-in password |
@@ -219,7 +219,7 @@ In the app's folder, next to the installer:
 
 ## First run
 
-Open **http://localhost:4600** on the computer (or `start.bat` / `./start.sh`, which starts Hearth
+Open **http://localhost:4600** on the computer (or `start.bat` / `./start.sh`, which starts Agent Express
 if it isn't running and opens it) and sign in with your password.
 
 1. **Tell the team about yourself.** Open `CLAUDE.md` in your workspace and fill in the few lines
@@ -233,7 +233,7 @@ if it isn't running and opens it) and sign in with your password.
    write what it's about, and **Start the conversation**.
 
 Your workspace is your first **space**. Add more from **Settings → Spaces → Add a space from
-GitHub**: pick one of your repositories and Hearth clones it and gives it its own team, notes and
+GitHub**: pick one of your repositories and Agent Express clones it and gives it its own team, notes and
 tasks.
 
 The [tutorial](docs/TUTORIAL.md) walks through all of this with screenshots, start to finish.
@@ -242,7 +242,7 @@ The [tutorial](docs/TUTORIAL.md) walks through all of this with screenshots, sta
 
 ## On your phone
 
-Your phone reaches Hearth through [Tailscale](https://tailscale.com), a private network between
+Your phone reaches Agent Express through [Tailscale](https://tailscale.com), a private network between
 your own devices that works from anywhere with a signal: home Wi-Fi, LTE, a hotel. Nothing is
 opened to the internet. The installer sets up the computer side; on the phone:
 
@@ -280,7 +280,7 @@ Two steps: let their device onto your computer's network, then give them their o
    their own Tailscale app (a free account is fine). They can now reach your computer, and only your
    computer, not the rest of your tailnet. If they already are on your tailnet (a family member you
    added as a user), skip this.
-2. **Invite them in Hearth.** **Settings → People & access → Invite someone**, type their name,
+2. **Invite them in Agent Express.** **Settings → People & access → Invite someone**, type their name,
    choose **Member** or **Admin**, and **Make an invite link**. Send it with **Copy link** or
    **Share…**. The link works once, for 7 days. They open it on their phone, pick their own
    password, and they're in under their own name. You can remove anyone from the same screen, and
@@ -338,8 +338,8 @@ Claude Code (skills, MCP servers, the GitHub CLI) is theirs to use too.
 
 ## What it costs
 
-**Hearth is free.** It runs your teammates on **your own Claude plan** through the Claude Code CLI,
-exactly as if you had opened that many Claude Code sessions yourself. There is no Hearth account
+**Agent Express is free.** It runs your teammates on **your own Claude plan** through the Claude Code CLI,
+exactly as if you had opened that many Claude Code sessions yourself. There is no Agent Express account
 and nothing to pay us.
 
 What uses your plan:
@@ -368,7 +368,7 @@ limit quickly; Max, or Sonnet and Haiku for most of the team, goes much further.
 ## Privacy and your data
 
 **Everything runs on your computer.** Your chats, files, memory, reports and settings live in your
-workspace and the app's folder, in plain files you own. There is no Hearth server, no account with
+workspace and the app's folder, in plain files you own. There is no Agent Express server, no account with
 us, no telemetry, no analytics and no crash reporting.
 
 The network connections, and that is the complete list:
@@ -380,7 +380,7 @@ The network connections, and that is the complete list:
 | **Fonts** | Google Fonts | When the app's page loads in a browser |
 | **GitHub** | github.com, through the GitHub CLI | Only if you use the GitHub features, and when you install or update |
 
-Hearth itself listens only on `127.0.0.1`. Only devices on your tailnet, and devices you've shared
+Agent Express itself listens only on `127.0.0.1`. Only devices on your tailnet, and devices you've shared
 the computer with, can reach it, and they still need to sign in.
 
 **Your workspace is plain text.** `memory/` and the chat history are readable files. Anyone who can
@@ -392,16 +392,16 @@ them in a private git remote, delete them.
 ## Updating
 
 Double-click **`update.bat`** (or run `./update.sh`). It fetches the newest version (`git pull`, or
-the ZIP from GitHub), reinstalls packages, rebuilds and restarts Hearth with the settings you
+the ZIP from GitHub), reinstalls packages, rebuilds and restarts Agent Express with the settings you
 already chose. Your workspace, password, settings and `roster.local.ts` are not part of the
 download, so nothing of yours is touched. Teammates who were awake wake back up afterwards.
 
 ## Uninstall
 
-Double-click **`uninstall.bat`** (or `./uninstall.sh`). It stops Hearth and removes the autostart,
+Double-click **`uninstall.bat`** (or `./uninstall.sh`). It stops Agent Express and removes the autostart,
 the shortcuts and the Tailscale share. Then delete the app's folder. **Your workspace is kept**,
-because it is yours: delete `~/Hearth` too if you don't want it. Node.js, Git, Claude Code and
-Tailscale stay installed; remove them the usual way if you only added them for Hearth.
+because it is yours: delete `~/AgentExpress` too if you don't want it. Node.js, Git, Claude Code and
+Tailscale stay installed; remove them the usual way if you only added them for Agent Express.
 
 ---
 
@@ -417,7 +417,7 @@ the fixes it can.
 
 Almost always Claude Code's "Do you trust this folder?" question, waiting in the terminal. Open the
 chat: the card shows the question with **Quick answers**. Pick the yes answer (or **Open the
-terminal** and answer it with the key bar). To fix it for good, stop Hearth and run
+terminal** and answer it with the key bar). To fix it for good, stop Agent Express and run
 `doctor.bat -Force` (it marks the workspace trusted). A space you add from GitHub is a new folder,
 so its first teammate may ask once too. If the terminal says Claude isn't signed in,
 type `/login` there, or run `claude` once on the computer.
@@ -426,8 +426,8 @@ type `/login` there, or run `claude` once on the computer.
 <details>
 <summary><b>The page says it can't connect, or keeps reconnecting</b></summary>
 
-Hearth isn't running. Run `start.bat` / `./start.sh`. If it stops again, the last lines of
-`.hearth/logs/hearth.log` in the app's folder say why; doctor prints the important ones.
+Agent Express isn't running. Run `start.bat` / `./start.sh`. If it stops again, the last lines of
+`.agent-express/logs/agent-express.log` in the app's folder say why; doctor prints the important ones.
 </details>
 
 <details>
@@ -448,10 +448,10 @@ the old one is signed out.
 <summary><b>Teammates stop when I sign out of Windows</b></summary>
 
 Signing out closes every app you own. Say yes to **start when I sign in** during install (or run
-`install.bat -Autostart`), and Hearth comes back by itself the next time you sign in.
+`install.bat -Autostart`), and Agent Express comes back by itself the next time you sign in.
 </details>
 
-Still stuck? [Open an issue](https://github.com/DatafyingTech/Hearth/issues) and paste your doctor
+Still stuck? [Open an issue](https://github.com/DatafyingTech/Agent-Express/issues) and paste your doctor
 output (check it for anything private first).
 
 ---
@@ -459,7 +459,7 @@ output (check it for anything private first).
 ## How it works
 
 ```
- your phone ──Tailscale──► tailscale serve ──► Hearth server (127.0.0.1:4600) ──► Claude Code ──► Anthropic
+ your phone ──Tailscale──► tailscale serve ──► Agent Express server (127.0.0.1:4600) ──► Claude Code ──► Anthropic
  your browser ────────────────────────────────►   │  one real terminal per teammate
                                                   │  meetings, chat, tasks, memory, reports
                                                   ▼
@@ -486,7 +486,7 @@ output (check it for anything private first).
 <details>
 <summary><b>Do I need an Anthropic API key?</b></summary>
 
-No. Hearth uses whatever Claude Code is signed in with: a Pro or Max plan, or an API key if that's
+No. Agent Express uses whatever Claude Code is signed in with: a Pro or Max plan, or an API key if that's
 how you use Claude Code.
 </details>
 
@@ -516,17 +516,17 @@ their briefs say so.
 <details>
 <summary><b>Can I use OpenCode or Codex instead of Claude Code?</b></summary>
 
-The engine underneath supports them, and the hire sheet lets you choose. Hearth is built and tested
+The engine underneath supports them, and the hire sheet lets you choose. Agent Express is built and tested
 around Claude Code, though: the shared memory, the conversation meetings and the usage numbers work
 best with it.
 </details>
 
 <details>
-<summary><b>What's Hearth HQ?</b></summary>
+<summary><b>What's Agent Express (Fun Edition)?</b></summary>
 
 The same team in a 3D office you can walk around: teammates at desks, meetings around a real table,
 a dog under the desks. It includes this app too. See
-[DatafyingTech/Hearth-HQ](https://github.com/DatafyingTech/Hearth-HQ).
+[DatafyingTech/Agent-Express-Fun-Edition](https://github.com/DatafyingTech/Agent-Express-Fun-Edition).
 </details>
 
 ---
@@ -539,9 +539,9 @@ security problem? Please read [SECURITY.md](SECURITY.md) and report it privately
 
 ## Credits
 
-Hearth is built on **[agent-office](https://github.com/AgentSystemLabs/agent-office)** by
+Agent Express is built on **[agent-office](https://github.com/AgentSystemLabs/agent-office)** by
 AgentSystemLabs (MIT), the multiplayer office for Claude Code workers that does the hard parts: real
-shared terminals, hooks-driven status, worktrees, the task queue and the meeting room. Hearth adds
+shared terminals, hooks-driven status, worktrees, the task queue and the meeting room. Agent Express adds
 the phone-first app, the roster and crews, conversation meetings with a shared memory, and the
 one-line installers. Thank you.
 
@@ -550,7 +550,7 @@ Also built with [Claude Code](https://docs.claude.com/en/docs/claude-code),
 [node-pty](https://github.com/microsoft/node-pty), [Vite](https://vite.dev) and
 [Lucide](https://lucide.dev) icons.
 
-Hearth is an independent project. It is not affiliated with, endorsed by or sponsored by Anthropic
+Agent Express is an independent project. It is not affiliated with, endorsed by or sponsored by Anthropic
 or Tailscale. Claude and Claude Code are trademarks of Anthropic.
 
 ## License

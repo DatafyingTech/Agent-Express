@@ -1,5 +1,5 @@
 {
-  "name": "hearth",
+  "name": "agent-express",
   "version": "1.0.0",
   "description": "Run your life and business with a team of Claude Code agents, from your phone. A calm, mobile-first app that runs on your own computer and reaches your phone over Tailscale.",
   "keywords": [
@@ -12,19 +12,19 @@
     "self-hosted",
     "assistant"
   ],
-  "homepage": "https://github.com/DatafyingTech/Hearth#readme",
+  "homepage": "https://github.com/DatafyingTech/Agent-Express#readme",
   "bugs": {
-    "url": "https://github.com/DatafyingTech/Hearth/issues"
+    "url": "https://github.com/DatafyingTech/Agent-Express/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DatafyingTech/Hearth.git"
+    "url": "git+https://github.com/DatafyingTech/Agent-Express.git"
   },
   "license": "MIT",
   "author": "Datafying Tech",
   "type": "module",
   "bin": {
-    "hearth": "bin/hearth.js"
+    "agent-express": "bin/agent-express.js"
   },
   "files": [
     "bin",
@@ -42,7 +42,7 @@
     "build:server": "tsc -p tsconfig.server.json",
     "pretypecheck": "node scripts/roster.mjs",
     "typecheck": "tsc -p tsconfig.server.json --noEmit && tsc -p tsconfig.client.json --noEmit",
-    "start": "node bin/hearth.js",
+    "start": "node bin/agent-express.js",
     "prepare": "npm run build",
     "roster": "node scripts/roster.mjs",
     "postinstall": "node scripts/roster.mjs"
